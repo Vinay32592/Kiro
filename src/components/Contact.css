@@ -1,0 +1,232 @@
+/* ============================================================
+   Contact / Reservation Section
+   ============================================================ */
+
+.contact {
+  background: var(--color-dark);
+}
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+/* ── Info cards ── */
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--color-dark-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.contact__info-card:hover {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.contact__info-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.contact__info-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.contact__info-value {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Social links row */
+.contact__social {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.contact__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: var(--color-dark-3);
+  transition: all var(--transition);
+}
+
+.contact__social-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-light);
+  background: rgba(200,134,10,0.08);
+}
+
+/* ── Form ── */
+.contact__form-wrap {
+  background: var(--color-dark-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+
+.contact__form-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Two-column row inside form */
+.contact__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* A single field (label + input) */
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact__field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Shared input / select / textarea styles */
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  padding: 0.75rem 1rem;
+  background: var(--color-dark-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  resize: none;
+}
+
+.contact__field input::placeholder,
+.contact__field textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.contact__field input:focus,
+.contact__field select:focus,
+.contact__field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(200,134,10,0.15);
+}
+
+/* Style the date input calendar icon (WebKit) */
+.contact__field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+  cursor: pointer;
+}
+
+/* Dropdown option colours */
+.contact__field select option {
+  background: var(--color-dark-2);
+  color: var(--color-text);
+}
+
+.contact__submit {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.95rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.contact__submit--loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Success state ── */
+.contact__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  animation: fadeUp 0.5s ease;
+}
+
+.contact__success-icon {
+  font-size: 3.5rem;
+}
+
+.contact__success h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.contact__success p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form-wrap {
+    padding: 1.5rem;
+  }
+}

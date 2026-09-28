@@ -1,0 +1,322 @@
+/* ============================================================
+   SPICE GARDEN — Global Styles
+   ============================================================
+   
+   HOW THIS FILE IS ORGANIZED:
+   1. CSS Variables (design tokens — colors, fonts, spacing)
+   2. Reset & Base styles
+   3. Typography helpers
+   4. Reusable utility classes
+   5. Animations & keyframes
+   6. Scrollbar styling
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. CSS VARIABLES (Design Tokens)
+      Change these to retheme the entire site instantly.
+   ------------------------------------------------------------ */
+:root {
+  /* Brand Colors */
+  --color-primary: #c8860a;       /* warm gold — buttons, accents */
+  --color-primary-dark: #a06808;  /* darker gold — hover states  */
+  --color-primary-light: #f0c060; /* light gold — highlights     */
+
+  /* Neutrals */
+  --color-dark: #1a1008;          /* near-black background       */
+  --color-dark-2: #2b1f0e;        /* slightly lighter dark       */
+  --color-dark-3: #3d2e14;        /* card backgrounds            */
+  --color-text: #f5ede0;          /* main light text             */
+  --color-text-muted: #b0987a;    /* secondary / muted text      */
+  --color-border: rgba(200,134,10,0.25); /* subtle gold border   */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', 'Segoe UI', sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 20px rgba(200,134,10,0.35);
+
+  /* Transitions */
+  --transition: 0.3s ease;
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* smooth-scroll is applied via JS for better browser support,
+     but this CSS property also helps in modern browsers */
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-dark);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ------------------------------------------------------------
+   3. TYPOGRAPHY HELPERS
+   ------------------------------------------------------------ */
+
+/* Section label — small uppercase text above headings */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+/* Main section heading */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+/* Italic accent variant */
+.section-title em {
+  font-style: italic;
+  color: var(--color-primary-light);
+}
+
+/* Subtext below headings */
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* Decorative gold divider line */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-full);
+  margin: var(--space-xs) 0 var(--space-md);
+}
+
+/* Center-aligned divider */
+.divider--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ------------------------------------------------------------
+   4. UTILITY CLASSES
+   ------------------------------------------------------------ */
+
+/* Constrain content width and center it */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+/* Standard section padding */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* Text alignment */
+.text-center { text-align: center; }
+.text-left   { text-align: left;  }
+
+/* Primary CTA button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(200,134,10,0.5);
+}
+
+.btn-outline {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Price badge */
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+}
+
+/* Spice level dots */
+.spice-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.spice-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.spice-dot.active {
+  background: var(--color-primary);
+}
+
+/* ------------------------------------------------------------
+   5. ANIMATIONS & KEYFRAMES
+   ------------------------------------------------------------ */
+
+/* Fade up — used when sections scroll into view */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Subtle floating for hero ornaments */
+@keyframes float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Shimmer for skeleton loaders / decorative use */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Spin — for loading icons */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse glow on the gold accent line */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(200,134,10,0.4);  }
+  50%       { box-shadow: 0 0 20px rgba(200,134,10,0.8); }
+}
+
+/* Helper class — attach to any element to trigger fade-up on mount */
+.animate-fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Staggered animation delays for lists/grids */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* ------------------------------------------------------------
+   6. SCROLLBAR STYLING (WebKit)
+   ------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}

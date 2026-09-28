@@ -1,0 +1,151 @@
+/* ============================================================
+   Popular Dishes Section
+   ============================================================ */
+
+.dishes {
+  background: var(--color-dark);
+}
+
+.dishes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
+
+.dishes__cta {
+  margin-top: 3rem;
+}
+
+/* ── Dish Card ── */
+.dish-card {
+  background: var(--color-dark-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.dish-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  border-color: var(--color-primary);
+}
+
+/* ── Image wrapper ── */
+.dish-card__image-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.dish-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dish-card:hover .dish-card__image {
+  /* Subtle zoom on hover */
+  transform: scale(1.07);
+}
+
+/* Badge label (top-left corner) */
+.dish-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+/* ── Card body ── */
+.dish-card__body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dish-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.dish-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.dish-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* ── Footer row inside card ── */
+.dish-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.dish-card__spice {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dish-card__spice-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dish-card__order-btn {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition), letter-spacing var(--transition);
+  padding: 0;
+}
+
+.dish-card__order-btn:hover {
+  color: var(--color-primary-light);
+  letter-spacing: 0.1em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .dishes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .dishes__grid {
+    grid-template-columns: 1fr;
+  }
+}
